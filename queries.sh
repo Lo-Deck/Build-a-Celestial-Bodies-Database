@@ -39,13 +39,13 @@ echo "$($PSQL "SELECT name FROM games INNER JOIN teams ON winner_id = team_id WH
 
 
 echo -e "\nList of unique winning team names in the whole data set:"
-echo "$($PSQL "")"
+echo "$($PSQL "SELECT DISTINCT name FROM games INNER JOIN teams ON winner_id = team_id ORDER BY name ASC;")"
 
 
 echo -e "\nYear and team name of all the champions:"
-echo "$($PSQL "")"
+echo "$($PSQL "SELECT year, name FROM games INNER JOIN teams ON winner_id = team_id WHERE round = 'Final' ORDER BY year ASC;")"
 
 
 echo -e "\nList of teams that start with 'Co':"
-echo "$($PSQL "")"
+echo "$($PSQL "SELECT name FROM teams WHERE name LIKE 'Co%';")"
 
