@@ -31,11 +31,11 @@ echo "$($PSQL "SELECT COUNT(*) FROM games WHERE winner_goals > 2")"
 
 
 echo -e "\nWinner of the 2018 tournament team name:"
-echo "$($PSQL "")"
+echo "$($PSQL "SELECT name FROM games INNER JOIN teams ON winner_id = team_id WHERE year = 2018 AND round = 'Final';")"
 
 
 echo -e "\nList of teams who played in the 2014 'Eighth-Final' round:"
-echo "$($PSQL "")"
+echo "$($PSQL "SELECT name FROM games INNER JOIN teams ON winner_id = team_id WHERE year = 2014 AND round = 'Eighth-Final' UNION SELECT name FROM games INNER JOIN teams ON opponent_id = team_id WHERE year = 2014 AND round = 'Eighth-Final';")"
 
 
 echo -e "\nList of unique winning team names in the whole data set:"
